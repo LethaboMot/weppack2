@@ -38,7 +38,7 @@ showList();
 
 removeList = () => {
   // Select the to-do list element
-  var list = document.getElementById('list-container');
+  const list = document.getElementById('list-container');
   // Remove all the child elements of the to-do list element
   while (list.firstChild) {
     list.removeChild(list.firstChild);
