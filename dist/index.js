@@ -44,3 +44,44 @@ removeList = () => {
     list.removeChild(list.firstChild);
   }
 }
+
+// Create an array of to-do tasks
+const tasks = [
+  {
+    description: 'Clean the kitchen',
+    completed: false,
+    index: 1
+  },
+  {
+    description: 'Do laundry',
+    completed: true,
+    index: 2
+  },
+  {
+    description: 'Buy groceries',
+    completed: false,
+    index: 3
+  }
+];
+
+// Select the HTML list element
+const list = document.querySelector('#list-container');
+
+// Loop through the tasks array and create an HTML list item element for each task
+tasks.forEach(task => {
+  // Create a new list item element
+  const listItem = document.createElement('li');
+
+  // Set the text content of the list item to the task description
+  listItem.textContent = task.description;
+
+  // Check if the task is completed and add a class to the list item based on the result
+  if (task.completed) {
+    listItem.classList.add('checked');
+  } else {
+    listItem.classList.add('SPAN');
+  }
+
+  // Add the list item to the HTML list element
+  list.appendChild(listItem);
+});
