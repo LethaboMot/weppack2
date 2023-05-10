@@ -3,39 +3,40 @@ const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
 
 
-addToList = () => {
-    if(inputBox.value === ''){
-        
+const addToList = () => {
+  if (inputBox.value === '') {
+       alert('any'); 
   } else {
-    let li = document.createElement('li'); // in the line it is making one HTML element with the tag name 'li'
+    const li = document.createElement('li'); // in the line it is making one HTML element with the tag name 'li'
     li.innerHTML = inputBox.value; //making as whenever someone text in the input it appears there
     listContainer.appendChild(li); // where the content of the input should displayed
-    let span = document.createElement('span');
+    const span = document.createElement('span');
     span.innerHTML = '\u00d7';
     li.appendChild(span);
   }
   inputBox.value = '';
   saveData();
-}
+};
+addToList();
 
-listContainer.addEventListener('click', function(e){
-  if(e.target.tagName === 'LI'){
+listContainer.addEventListener('click', function (e) {
+  if (e.target.tagName === 'LI') {
     e.target.classList.toggle('checked'); //making the line through the middle when you the user clicks on the to-do list
     saveData();
-  } else if(e.target.tagName === 'SPAN'){
+  } else if (e.target.tagName === 'SPAN') {
     e.target.parentElement.remove();
     saveData();
   }
-}, false)
+}, false);
 
 // localStorage
-saveData = () => {
-  localStorage.setItem('data',listContainer.innerHTML);
+const saveData = () => {
+  localStorage.setItem('data', listContainer.innerHTML);
 }
 
 showList = () => {
-  listContainer.innerHTML = localStorage.getItem('data')
-}
+  listContainer.innerHTML = localStorage.getItem('data');
+};
 showList();
 
 removeList = () => {
@@ -45,25 +46,25 @@ removeList = () => {
   while (list.firstChild) {
     list.removeChild(list.firstChild);
   }
-}
+};
 
 // Create an array of to-do tasks
 const tasks = [
   {
     description: 'Clean the kitchen',
     completed: false,
-    index: 1
+    index: 1,
   },
   {
     description: 'Do laundry',
     completed: true,
-    index: 2
+    index: 2,
   },
   {
     description: 'Buy groceries',
     completed: false,
-    index: 3
-  }
+    index: 3,
+  },
 ];
 
 // Select the HTML list element

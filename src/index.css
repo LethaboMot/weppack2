@@ -9,10 +9,10 @@ body {
 
 .container {
   width: 100%;
-  min-height: 100hv;
+  min-height: 100vh;
   padding: 30px;
 }
-  
+
 .list {
   width: 100%;
   max-width: 540px;
@@ -63,12 +63,12 @@ ul li::before {
   border-radius: 50%;
   position: absolute;
   top: 12px;
-  left:8px;
-  color: #000000;
+  left: 8px;
+  color: #000;
 }
   
 ul li.checked {
-  color: #000000;
+  color: #000;
   text-decoration: line-through;
 }
 
@@ -95,7 +95,7 @@ ul li span:hover {
 }
 
 .removeButton {
-  background-color: #555555;
+  background-color: #555;
   color: #e7e3e3;
   border: none;
   text-align: center;
