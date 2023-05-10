@@ -34,12 +34,12 @@ const saveData = () => {
   localStorage.setItem('data', listContainer.innerHTML);
 }
 
-showList = () => {
+const showList = () => {
   listContainer.innerHTML = localStorage.getItem('data');
 };
 showList();
 
-removeList = () => {
+const removeList = () => {
   // Select the to-do list element
   const list = document.getElementById('list-container');
   // Remove all the child elements of the to-do list element
@@ -47,6 +47,7 @@ removeList = () => {
     list.removeChild(list.firstChild);
   }
 };
+removeList();
 
 // Create an array of to-do tasks
 const tasks = [
