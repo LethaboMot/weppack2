@@ -5,14 +5,14 @@ const listContainer = document.getElementById('list-container');
 
 const addToList = () => {
   if (inputBox.value === '') {
-    alert('any'); 
+  alert('any');
   } else {
     const li = document.createElement('li'); // in the line it is making one HTML element with the tag name 'li'
-      li.innerHTML = inputBox.value; //making as whenever someone text in the input it appears there
-      listContainer.appendChild(li); // where the content of the input should displayed
+    li.innerHTML = inputBox.value;  //making as whenever someone text in the input it appears there
+    listContainer.appendChild(li); // where the content of the input should displayed
     const span = document.createElement('span');
-      span.innerHTML = '\u00d7';
-      li.appendChild(span);
+    span.innerHTML = '\u00d7';
+    li.appendChild(span);
   }
   inputBox.value = '';
   saveData();
@@ -21,7 +21,7 @@ addToList();
 
 listContainer.addEventListener('click', function (e) {
   if (e.target.tagName === 'LI') {
-    e.target.classList.toggle('checked'); //making the line through the middle when you the user clicks on the to-do list
+    e.target.classList.toggle('checked');  //making the line through the middle when you the user clicks on the to-do list
     saveData();
   } else if (e.target.tagName === 'SPAN') {
     e.target.parentElement.remove();
@@ -33,7 +33,7 @@ listContainer.addEventListener('click', function (e) {
 const saveData = () => {
   localStorage.setItem('data', listContainer.innerHTML);
 };
-
+saveData();
 const showList = () => {
   listContainer.innerHTML = localStorage.getItem('data');
 };
@@ -71,7 +71,7 @@ const tasks = [
 // Select the HTML list element
 const list = document.querySelector('#list-container');
 // Loop through the tasks array and create an HTML list item element for each task
-tasks.forEach(task => {
+tasks.forEach(task = () => {
   // Create a new list item element
   const listItem = document.createElement('li');
 
