@@ -1,14 +1,14 @@
-import './index.css';
+
 const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
 
 const addToList = () => {
   if (inputBox.value === '') {
-  alert('any');
+    alert('Please enter a task');
   } else {
-    const li = document.createElement('li'); // in the line it is making one HTML element with the tag name 'li'
-    li.innerHTML = inputBox.value;  //making as whenever someone text in the input it appears there
-    listContainer.appendChild(li); // where the content of the input should displayed
+    const li = document.createElement('li');
+    li.innerHTML = inputBox.value;
+    listContainer.appendChild(li);
     const span = document.createElement('span');
     span.innerHTML = '\u00d7';
     li.appendChild(span);
@@ -16,11 +16,12 @@ const addToList = () => {
   inputBox.value = '';
   saveData();
 };
+
 addToList();
 
 listContainer.addEventListener('click', function (e) {
   if (e.target.tagName === 'LI') {
-    e.target.classList.toggle('checked');  //making the line through the middle when you the user clicks on the to-do list
+    e.target.classList.toggle('checked'); // making the line through the middle when the user clicks on the to-do list
     saveData();
   } else if (e.target.tagName === 'SPAN') {
     e.target.parentElement.remove();
@@ -32,10 +33,11 @@ listContainer.addEventListener('click', function (e) {
 const saveData = () => {
   localStorage.setItem('data', listContainer.innerHTML);
 };
-saveData();
+
 const showList = () => {
   listContainer.innerHTML = localStorage.getItem('data');
 };
+
 showList();
 
 const removeList = () => {
@@ -46,7 +48,6 @@ const removeList = () => {
     list.removeChild(list.firstChild);
   }
 };
-removeList();
 
 // Create an array of to-do tasks
 const tasks = [
@@ -69,8 +70,9 @@ const tasks = [
 
 // Select the HTML list element
 const list = document.querySelector('#list-container');
+
 // Loop through the tasks array and create an HTML list item element for each task
-tasks.forEach(tasks = () =>  {
+tasks.forEach((task) => {
   // Create a new list item element
   const listItem = document.createElement('li');
 
@@ -81,10 +83,11 @@ tasks.forEach(tasks = () =>  {
   if (task.completed) {
     listItem.classList.add('checked');
   } else {
-    listItem.classList.add('SPAN');
+    listItem.classList.add('todo');
   }
 
   // Add the list item to the HTML list element
   list.appendChild(listItem);
 });
-task();
+
+saveData();
