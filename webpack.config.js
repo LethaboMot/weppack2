@@ -5,11 +5,11 @@ module.exports = {
   entry: {
     index: './src/index.js',
   },
-plugins: [
-  new HtmlWebpackPlugin({
-    title: 'Output Management',
-    template: './src/index.html',
-  }),
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Output Management',
+      template: './src/index.html',
+    }),
   ],
   output: {
     filename: '[name].bundle.js',

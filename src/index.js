@@ -5,14 +5,14 @@ const listContainer = document.getElementById('list-container');
 
 const addToList = () => {
   if (inputBox.value === '') {
-       alert('any'); 
+    alert('any'); 
   } else {
     const li = document.createElement('li'); // in the line it is making one HTML element with the tag name 'li'
-    li.innerHTML = inputBox.value; //making as whenever someone text in the input it appears there
-    listContainer.appendChild(li); // where the content of the input should displayed
+      li.innerHTML = inputBox.value; //making as whenever someone text in the input it appears there
+      listContainer.appendChild(li); // where the content of the input should displayed
     const span = document.createElement('span');
-    span.innerHTML = '\u00d7';
-    li.appendChild(span);
+      span.innerHTML = '\u00d7';
+      li.appendChild(span);
   }
   inputBox.value = '';
   saveData();
@@ -32,7 +32,7 @@ listContainer.addEventListener('click', function (e) {
 // localStorage
 const saveData = () => {
   localStorage.setItem('data', listContainer.innerHTML);
-}
+};
 
 const showList = () => {
   listContainer.innerHTML = localStorage.getItem('data');
