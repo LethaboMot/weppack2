@@ -2,7 +2,6 @@ import './index.css';
 const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
 
-
 const addToList = () => {
   if (inputBox.value === '') {
   alert('any');
@@ -71,7 +70,7 @@ const tasks = [
 // Select the HTML list element
 const list = document.querySelector('#list-container');
 // Loop through the tasks array and create an HTML list item element for each task
-tasks.forEach(task = () => {
+tasks.forEach(tasks = () =>  {
   // Create a new list item element
   const listItem = document.createElement('li');
 
@@ -88,3 +87,4 @@ tasks.forEach(task = () => {
   // Add the list item to the HTML list element
   list.appendChild(listItem);
 });
+task();
