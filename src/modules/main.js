@@ -3,7 +3,7 @@ const listContainer = document.getElementById('list-container');
 
 const addToList = () => {
   if (inputBox.value === '') {
-    return('');
+    return addToList();
   } else {
     const li = document.createElement('li');
     li.innerHTML = inputBox.value;
@@ -42,6 +42,6 @@ function showList() {
   listContainer.innerHTML = localStorage.getItem('data');
 }
 showList();
-// saveData();
+saveData();
 document.querySelector('.add-btn').addEventListener('click', addToList);
 document.querySelector('.removeButton').addEventListener('click', removeList);
