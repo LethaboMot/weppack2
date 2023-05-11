@@ -154,7 +154,7 @@ git checkout  feature
 
 <!-- AUTHORS -->
 
-👤 **Author1**
+👤 **Lethabo**
 
 - GitHub: [@LethaboMot](https://github.com/LethaboMot)
 - LinkedIn: [Lethabo Motloung](https://linkedin.com/in/linkedinhandle)
