@@ -5,7 +5,7 @@ const listContainer = document.getElementById('list-container');
 
 const addToList = () => {
   if (inputBox.value === '') {
-   
+    alert('');
   } else {
     const li = document.createElement('li');
     li.innerHTML = inputBox.value;
