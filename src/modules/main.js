@@ -1,9 +1,19 @@
 const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
 
+// localStorage
+function saveData() {
+  localStorage.setItem('data', listContainer.innerHTML);
+}
+
+function showList() {
+  listContainer.innerHTML = localStorage.getItem('data');
+}
+showList();
+
 const addToList = () => {
   if (inputBox.value === '') {
-    return addToList();
+    alert('');
   } else {
     const li = document.createElement('li');
     li.innerHTML = inputBox.value;
@@ -15,7 +25,7 @@ const addToList = () => {
   inputBox.value = '';
   saveData();
 };
-addToList();
+
 function removeList() {
   // Select the to-do list element
   const list = document.getElementById('list-container');
@@ -24,6 +34,7 @@ function removeList() {
     list.removeChild(list.firstChild);
   }
 }
+
 listContainer.addEventListener('click', (e) => {
   if (e.target.tagName === 'LI') {
     e.target.classList.toggle('checked');
@@ -34,14 +45,5 @@ listContainer.addEventListener('click', (e) => {
   }
 }, false);
 
-// localStorage
-function saveData() {
-  localStorage.setItem('data', listContainer.innerHTML);
-}
-function showList() {
-  listContainer.innerHTML = localStorage.getItem('data');
-}
-showList();
-saveData();
 document.querySelector('.add-btn').addEventListener('click', addToList);
 document.querySelector('.removeButton').addEventListener('click', removeList);
