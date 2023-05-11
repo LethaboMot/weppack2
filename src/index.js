@@ -29,10 +29,10 @@ function removeList() {
 listContainer.addEventListener('click', function (e) {
   if (e.target.tagName === 'LI') {
     e.target.classList.toggle('checked'); // making the line through the middle when the user clicks on the to-do list
-    saveData();
+   
   } else if (e.target.tagName === 'SPAN') {
     e.target.parentElement.remove();
-    saveData();
+   
   }
 },false );
 
