@@ -3,21 +3,6 @@ import './index.css';
 const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
 
-const saveData = () => {
-  localStorage.setItem('data', listContainer.innerHTML);
-};
-
-const showList = () => {
-  listContainer.innerHTML = localStorage.getItem('data');
-};
-
-const removeList = () => {
-  const list = document.getElementById('list-container');
-  while (list.firstChild) {
-    list.removeChild(list.firstChild);
-  }
-};
-
 const addToList = () => {
   if (inputBox.value === '') {
     alert('Please enter a task');
@@ -37,14 +22,33 @@ addToList();
 
 listContainer.addEventListener('click', function (e) {
   if (e.target.tagName === 'LI') {
-    e.target.classList.toggle('checked');
+    e.target.classList.toggle('checked'); // making the line through the middle when the user clicks on the to-do list
     saveData();
   } else if (e.target.tagName === 'SPAN') {
     e.target.parentElement.remove();
     saveData();
   }
-}, false);
+});
 
+// localStorage
+const saveData = () => {
+  localStorage.setItem('data', listContainer.innerHTML);
+};
+
+const showList = () => {
+  listContainer.innerHTML = localStorage.getItem('data');
+};
+
+showList();
+
+const removeList = () => {
+  // Remove all the child elements of the to-do list element
+  while (listContainer.firstChild) {
+    listContainer.removeChild(listContainer.firstChild);
+  }
+};
+
+// Create an array of to-do tasks
 const tasks = [
   {
     description: 'Clean the kitchen',
@@ -63,17 +67,23 @@ const tasks = [
   },
 ];
 
-const list = document.querySelector('#list-container');
-
+// Loop through the tasks array and create an HTML list item element for each task
 tasks.forEach((task) => {
+  // Create a new list item element
   const listItem = document.createElement('li');
+
+  // Set the text content of the list item to the task description
   listItem.textContent = task.description;
+
+  // Check if the task is completed and add a class to the list item based on the result
   if (task.completed) {
     listItem.classList.add('checked');
   } else {
     listItem.classList.add('todo');
   }
-  list.appendChild(listItem);
+
+  // Add the list item to the HTML list element
+  listContainer.appendChild(listItem);
 });
 
 saveData();
