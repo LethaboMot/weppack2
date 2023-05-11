@@ -5,7 +5,7 @@ const listContainer = document.getElementById('list-container');
 
 const addToList = () => {
   if (inputBox.value === '') {
-    alert('Please enter a task');
+    alert('');
   } else {
     const li = document.createElement('li');
     li.innerHTML = inputBox.value;
@@ -15,7 +15,7 @@ const addToList = () => {
     li.appendChild(span);
   }
   inputBox.value = '';
-  saveData();
+  // saveData();
 };
 addToList();
 function removeList() {
@@ -26,7 +26,7 @@ function removeList() {
     list.removeChild(list.firstChild);
   }
 }
-listContainer.addEventListener('click', function (e) {
+listContainer.addEventListener('click', (e) => {
   if (e.target.tagName === 'LI') {
     e.target.classList.toggle('checked'); // making the line through the middle when the user clicks on the to-do list
    
@@ -34,7 +34,7 @@ listContainer.addEventListener('click', function (e) {
     e.target.parentElement.remove();
    
   }
-},false );
+}, false);
 
 // localStorage
 function saveData() {
