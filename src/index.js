@@ -3,15 +3,11 @@ import './index.css';
 const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
 
-const saveData = () => {
+function saveData() {
   localStorage.setItem('data', listContainer.innerHTML);
-};
+}
 
-const showList = () => {
-  listContainer.innerHTML = localStorage.getItem('data');
-};
-
-const addToList = () => {
+function addToList() {
   if (inputBox.value === '') {
     alert('Please enter a task');
   } else {
@@ -24,25 +20,30 @@ const addToList = () => {
   }
   inputBox.value = '';
   saveData();
-};
+}
 
 addToList();
 
-listContainer.addEventListener('click', function (e) {
-  if (e.target.tagName === 'LI') {
-    e.target.classList.toggle('checked'); // making the line through the middle when the user clicks on the to-do list
-    saveData();
-  } else if (e.target.tagName === 'SPAN') {
-    e.target.parentElement.remove();
-    saveData();
-  }
-});
+listContainer.addEventListener(
+  'click',
+  function (e) {
+    if (e.target.tagName === 'LI') {
+      e.target.classList.toggle('checked'); // making the line through the middle when the user clicks on the to-do list
+      saveData();
+    } else if (e.target.tagName === 'SPAN') {
+      e.target.parentElement.remove();
+      saveData();
+    }
+  },
+  false
+);
 
 // localStorage
+const showList = () => {
+  listContainer.innerHTML = localStorage.getItem('data');
+};
 
-showList();
-
-const removeList = () => {
+const removeList = function () {
   // Select the to-do list element
   const list = document.getElementById('list-container');
   // Remove all the child elements of the to-do list element
