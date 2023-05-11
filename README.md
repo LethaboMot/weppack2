@@ -146,7 +146,7 @@ You can deploy this project using: GitHub Pages,
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-git clone git@github.com:LethaboMot/Hello-Microverse-Project.git
+git clone git@github.com:https://github.com/LethaboMot/weppack2.git
 cd  Hello-Microverse-Project
 git checkout  feature
 
