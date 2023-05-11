@@ -3,6 +3,14 @@ import './index.css';
 const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
 
+const saveData = () => {
+  localStorage.setItem('data', listContainer.innerHTML);
+};
+
+const showList = () => {
+  listContainer.innerHTML = localStorage.getItem('data');
+};
+
 const addToList = () => {
   if (inputBox.value === '') {
     alert('Please enter a task');
@@ -31,20 +39,15 @@ listContainer.addEventListener('click', function (e) {
 });
 
 // localStorage
-const saveData = () => {
-  localStorage.setItem('data', listContainer.innerHTML);
-};
-
-const showList = () => {
-  listContainer.innerHTML = localStorage.getItem('data');
-};
 
 showList();
 
 const removeList = () => {
+  // Select the to-do list element
+  const list = document.getElementById('list-container');
   // Remove all the child elements of the to-do list element
-  while (listContainer.firstChild) {
-    listContainer.removeChild(listContainer.firstChild);
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
   }
 };
 
@@ -67,6 +70,9 @@ const tasks = [
   },
 ];
 
+// Select the HTML list element
+const list = document.querySelector('#list-container');
+
 // Loop through the tasks array and create an HTML list item element for each task
 tasks.forEach((task) => {
   // Create a new list item element
@@ -83,7 +89,7 @@ tasks.forEach((task) => {
   }
 
   // Add the list item to the HTML list element
-  listContainer.appendChild(listItem);
+  list.appendChild(listItem);
 });
 
 saveData();
