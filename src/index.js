@@ -1,6 +1,8 @@
 import './index.css';
+
 const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
+
 const addToList = () => {
   if (inputBox.value === '') {
     alert('Please enter a task');
@@ -25,16 +27,15 @@ function removeList() {
   }
 }
 listContainer.addEventListener('click', function (e) {
-    if (e.target.tagName === 'LI') {
-      e.target.classList.toggle('checked'); // making the line through the middle when the user clicks on the to-do list
-      saveData();
-    } else if (e.target.tagName === 'SPAN') {
-      e.target.parentElement.remove();
-      saveData();
-    }
-  },
-  false
-);
+  if (e.target.tagName === 'LI') {
+    e.target.classList.toggle('checked'); // making the line through the middle when the user clicks on the to-do list
+    saveData();
+  } else if (e.target.tagName === 'SPAN') {
+    e.target.parentElement.remove();
+    saveData();
+  }
+},false );
+
 // localStorage
 function saveData() {
   localStorage.setItem('data', listContainer.innerHTML);
@@ -64,7 +65,7 @@ const tasks = [
 // Select the HTML list element
 const list = document.querySelector('#list-container');
 // Loop through the tasks array and create an HTML list item element for each task
-tasks.forEach(task => {
+tasks.forEach((task) => {
   // Create a new list item element
   const listItem = document.createElement('li');
   // Set the text content of the list item to the task description
