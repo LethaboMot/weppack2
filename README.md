@@ -26,7 +26,7 @@ After you're finished please remove all the comments and instructions!
 
   
 
-  <h3><b>to-do list</b></h3>
+  <h3><b>add and remove</b></h3>
 
 </div>
 
