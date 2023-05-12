@@ -73,4 +73,3 @@ document.querySelector('.add-btn').addEventListener('click', addToList);
 document.querySelector('.removeButton').addEventListener('click', removeList);
 // double click the items on the list to edit
 document.querySelector('li').addEventListener('click', activateEdit);
-activateEdit();
