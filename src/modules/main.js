@@ -45,5 +45,30 @@ listContainer.addEventListener('click', (e) => {
   }
 }, false);
 
-document.querySelector('.add-btn').addEventListener('click', addToList);
-document.querySelector('.removeButton').addEventListener('click', removeList);
+// document.querySelector('.add-btn').addEventListener('click', addToList);
+// document.querySelector('.removeButton').addEventListener('click', removeList);
+
+ul.addEventListener('click', (event) => {
+  if(event.target,tagName === 'BUTTON') {
+    const button = event.target;
+    const li = button.parentNode;
+    const ul = li.parentNode;
+    if (button.textContent === 'removeList') {
+      ul.removeChild(li); 
+    } else if (button.textContent === 'Add') {
+      const Span = li.firstElementChild;
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = Span.textContent;
+      li.insertBefore(input, Span);
+      button.textContent = 'Add';
+      } else if (button.textContent === 'save') {
+        const input = li.firstElementChild;
+        const Span = document.createElement('span');
+        Span.textContent = input.value;
+        li.insertBefore(Span, input);
+        li.removeChild(input);
+        button.textContent = 'addToList';
+      }
+  }
+});
