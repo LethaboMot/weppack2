@@ -1,13 +1,17 @@
 const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
+const STORAGE_KEY = "list_data";
 
 // localStorage
 function saveData() {
-  localStorage.setItem('data', listContainer.innerHTML);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(listContainer.innerHTML));
 }
 
 function showList() {
-  listContainer.innerHTML = localStorage.getItem('data');
+  const savedData = localStorage.getItem(STORAGE_KEY);
+  if (savedData) {
+    listContainer.innerHTML = JSON.parse(savedData);
+  }
 }
 showList();
 
@@ -33,6 +37,24 @@ function removeList() {
   while (list.firstChild) {
     list.removeChild(list.firstChild);
   }
+  saveData();
+}
+
+function editList(e) {
+  if (e.target.tagName === 'LI') {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = e.target.textContent;
+    e.target.replaceWith(input);
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const li = document.createElement('li');
+        li.textContent = e.target.value;
+        input.replaceWith(li);
+        saveData();
+      }
+    });
+  }
 }
 
 listContainer.addEventListener('click', (e) => {
@@ -43,32 +65,11 @@ listContainer.addEventListener('click', (e) => {
     e.target.parentElement.remove();
     saveData();
   }
-}, false);
-
-// document.querySelector('.add-btn').addEventListener('click', addToList);
-// document.querySelector('.removeButton').addEventListener('click', removeList);
-
-ul.addEventListener('click', (event) => {
-  if(event.target,tagName === 'BUTTON') {
-    const button = event.target;
-    const li = button.parentNode;
-    const ul = li.parentNode;
-    if (button.textContent === 'removeList') {
-      ul.removeChild(li); 
-    } else if (button.textContent === 'Add') {
-      const Span = li.firstElementChild;
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.value = Span.textContent;
-      li.insertBefore(input, Span);
-      button.textContent = 'Add';
-      } else if (button.textContent === 'save') {
-        const input = li.firstElementChild;
-        const Span = document.createElement('span');
-        Span.textContent = input.value;
-        li.insertBefore(Span, input);
-        li.removeChild(input);
-        button.textContent = 'addToList';
-      }
-  }
 });
+
+listContainer.addEventListener('dblclick', editList);
+
+document.querySelector('.add-btn').addEventListener('click', addToList);
+document.querySelector('.removeButton').addEventListener('click', removeList);
+// double click the item on the list to edit
+document.querySelector('li').addEventListener('click', activateEdit);
