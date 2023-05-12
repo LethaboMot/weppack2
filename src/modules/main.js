@@ -7,9 +7,8 @@ function saveData() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(listContainer.innerHTML));
 }
 
-
 function showList() {
-  const savedData = (localStorage.getItem(STORAGE_KEY));
+  const savedData =  JSON.parse(localStorage.getItem(STORAGE_KEY));
   if (savedData) {
     listContainer.innerHTML = JSON.parse(savedData);
   }
