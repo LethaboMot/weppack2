@@ -67,6 +67,10 @@ listContainer.addEventListener('click', (e) => {
   }
 });
 
+function activateEdit() {
+  const li = document.querySelector('li');
+  li.addEventListener('dblclick', editList);
+}
 listContainer.addEventListener('dblclick', editList);
 
 document.querySelector('.add-btn').addEventListener('click', addToList);
