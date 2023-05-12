@@ -1,6 +1,6 @@
 const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
-const STORAGE_KEY = "list_data";
+const STORAGE_KEY = 'list_data';
 
 // localStorage
 function saveData() {
@@ -71,5 +71,6 @@ listContainer.addEventListener('dblclick', editList);
 
 document.querySelector('.add-btn').addEventListener('click', addToList);
 document.querySelector('.removeButton').addEventListener('click', removeList);
-// double click the item on the list to edit
+// double click the items on the list to edit
 document.querySelector('li').addEventListener('click', activateEdit);
+activateEdit();
