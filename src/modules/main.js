@@ -23,7 +23,7 @@ const addToList = () => {
     li.innerHTML = inputBox.value;
     listContainer.appendChild(li);
     const span = document.createElement('span');
-    span.innerHTML = '\u00d7';
+    span.innerHTML = '';
     li.appendChild(span);
   }
   inputBox.value = '';
