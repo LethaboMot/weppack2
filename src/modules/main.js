@@ -15,20 +15,15 @@ function showList() {
 }
 showList();
 
-showList();
-
 const addToList = () => {
   if (inputBox.value === '') {
     alert('');
   } else {
     const li = document.createElement('li');
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    li.appendChild(checkbox);
-    li.innerHTML += inputBox.value;
+    li.innerHTML = inputBox.value;
     listContainer.appendChild(li);
     const span = document.createElement('span');
-    span.innerHTML = '';
+    span.innerHTML = '\u00d7';
     li.appendChild(span);
   }
   inputBox.value = '';
@@ -55,7 +50,6 @@ function editList(e) {
       if (e.key === 'Enter') {
         const li = document.createElement('li');
         li.textContent = e.target.value;
-        li.appendChild(checkbox);
         input.replaceWith(li);
         saveData();
       }
@@ -64,9 +58,7 @@ function editList(e) {
 }
 
 listContainer.addEventListener('click', (e) => {
-  if (e.target.tagName === 'INPUT') {
-    saveData();
-  } else if (e.target.tagName === 'LI') {
+  if (e.target.tagName === 'LI') {
     e.target.classList.toggle('checked');
     saveData();
   } else if (e.target.tagName === 'SPAN') {
