@@ -4,36 +4,16 @@ const STORAGE_KEY = 'list_data';
 
 // localStorage
 function saveData() {
-  const tasks = [];
-  const listItems = listContainer.getElementsByTagName('li');
-  for (let i = 0; i < listItems.length; i++) {
-    const task = {
-      taskName: listItems[i].textContent,
-      completed: listItems[i].querySelector('input[type=checkbox]').checked
-    };
-    tasks.push(task);
-  }
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(listContainer.innerHTML));
 }
 
 function showList() {
   const savedData = localStorage.getItem(STORAGE_KEY);
   if (savedData) {
-    const tasks = JSON.parse(savedData);
-    for (let i = 0; i < tasks.length; i++) {
-      const li = document.createElement('li');
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.checked = tasks[i].completed;
-      li.appendChild(checkbox);
-      li.innerHTML += tasks[i].taskName;
-      listContainer.appendChild(li);
-      const span = document.createElement('span');
-      span.innerHTML = '';
-      li.appendChild(span);
-    }
+    listContainer.innerHTML = JSON.parse(savedData);
   }
 }
+showList();
 
 showList();
 
