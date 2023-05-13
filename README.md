@@ -26,7 +26,7 @@ After you're finished please remove all the comments and instructions!
 
   
 
-  <h3><b>to-do list</b></h3>
+  <h3><b>add and remove</b></h3>
 
 </div>
 
@@ -146,7 +146,7 @@ You can deploy this project using: GitHub Pages,
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-git clone git@github.com:LethaboMot/Hello-Microverse-Project.git
+git clone git@github.com:https://github.com/LethaboMot/weppack2.git
 cd  Hello-Microverse-Project
 git checkout  feature
 
@@ -154,7 +154,7 @@ git checkout  feature
 
 <!-- AUTHORS -->
 
-👤 **Author1**
+👤 **Lethabo Motloung**
 
 - GitHub: [@LethaboMot](https://github.com/LethaboMot)
 - LinkedIn: [Lethabo Motloung](https://linkedin.com/in/linkedinhandle)
