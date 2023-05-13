@@ -2,6 +2,7 @@ const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
 const STORAGE_KEY = 'list_data';
 
+// localStorage
 function saveData() {
   const tasks = [];
   const listItems = listContainer.getElementsByTagName('li');
@@ -25,10 +26,10 @@ function showList() {
       checkbox.type = 'checkbox';
       checkbox.checked = tasks[i].completed;
       li.appendChild(checkbox);
-      li.appendChild(document.createTextNode(tasks[i].taskName));
+      li.innerHTML += tasks[i].taskName;
       listContainer.appendChild(li);
       const span = document.createElement('span');
-      span.innerHTML = '\u00d7';
+      span.innerHTML = '';
       li.appendChild(span);
     }
   }
@@ -38,16 +39,16 @@ showList();
 
 const addToList = () => {
   if (inputBox.value === '') {
-    alert('Please enter a task');
+    alert('');
   } else {
     const li = document.createElement('li');
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     li.appendChild(checkbox);
-    li.appendChild(document.createTextNode(inputBox.value));
+    li.innerHTML += inputBox.value;
     listContainer.appendChild(li);
     const span = document.createElement('span');
-    span.innerHTML = '\u00d7';
+    span.innerHTML = '';
     li.appendChild(span);
   }
   inputBox.value = '';
@@ -55,25 +56,26 @@ const addToList = () => {
 };
 
 function removeList() {
-  while (listContainer.firstChild) {
-    listContainer.removeChild(listContainer.firstChild);
+  // Select the to-do list element
+  const list = document.getElementById('list-container');
+  // Remove all the child elements of the to-do list element
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
   }
-  localStorage.removeItem(STORAGE_KEY);
+  saveData();
 }
 
 function editList(e) {
   if (e.target.tagName === 'LI') {
     const input = document.createElement('input');
     input.type = 'text';
-    input.value = e.target.textContent.trim();
+    input.value = e.target.textContent;
     e.target.replaceWith(input);
     input.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         const li = document.createElement('li');
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
+        li.textContent = e.target.value;
         li.appendChild(checkbox);
-        li.appendChild(document.createTextNode(input.value.trim()));
         input.replaceWith(li);
         saveData();
       }
@@ -93,7 +95,13 @@ listContainer.addEventListener('click', (e) => {
   }
 });
 
+function activateEdit() {
+  const li = document.querySelector('li');
+  li.addEventListener('dblclick', editList);
+}
 listContainer.addEventListener('dblclick', editList);
 
 document.querySelector('.add-btn').addEventListener('click', addToList);
 document.querySelector('.removeButton').addEventListener('click', removeList);
+// double click the items on the list to edit
+document.querySelector('li').addEventListener('click', activateEdit);
